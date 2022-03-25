@@ -9,11 +9,12 @@ namespace BloonsFPS_MelonMod
 {
     class CheatToggles
     {
-        public static bool GUIEnabled;
+        public static bool GUIEnabled = false;
         public static bool isAlreadyLogged;
 
-        public static bool nobalooncollision;
-        public static bool enableWeaponBuff;
-        public static bool GUIWeapon;
+        public static bool noblooncollision = false;
+        public static bool enableWeaponBuff = false;
+        public static bool GUIWeapon = false;
+        public static bool ESP = false;
     }
 }

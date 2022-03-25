@@ -1,0 +1,6 @@
+C:\Users\Justi\Desktop\Coding stuff\GUIs\C#\Apes-vs.-Helium-GUI-main (1)\Apes-vs.-Helium-GUI-main\BloonsFPS_MelonMod\bin\Debug\BloonsFPS_MelonMod.dll
+C:\Users\Justi\Desktop\Coding stuff\GUIs\C#\Apes-vs.-Helium-GUI-main (1)\Apes-vs.-Helium-GUI-main\BloonsFPS_MelonMod\bin\Debug\BloonsFPS_MelonMod.pdb
+C:\Users\Justi\Desktop\Coding stuff\GUIs\C#\Apes-vs.-Helium-GUI-main (1)\Apes-vs.-Helium-GUI-main\BloonsFPS_MelonMod\obj\Debug\BloonsFPSMelonMod.csproj.AssemblyReference.cache
+C:\Users\Justi\Desktop\Coding stuff\GUIs\C#\Apes-vs.-Helium-GUI-main (1)\Apes-vs.-Helium-GUI-main\BloonsFPS_MelonMod\obj\Debug\BloonsFPSMelonMod.csproj.CoreCompileInputs.cache
+C:\Users\Justi\Desktop\Coding stuff\GUIs\C#\Apes-vs.-Helium-GUI-main (1)\Apes-vs.-Helium-GUI-main\BloonsFPS_MelonMod\obj\Debug\BloonsFPS_MelonMod.dll
+C:\Users\Justi\Desktop\Coding stuff\GUIs\C#\Apes-vs.-Helium-GUI-main (1)\Apes-vs.-Helium-GUI-main\BloonsFPS_MelonMod\obj\Debug\BloonsFPS_MelonMod.pdb

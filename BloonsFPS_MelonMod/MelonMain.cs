@@ -26,8 +26,6 @@ namespace BloonsFPSMelonMod
         public override void OnApplicationStart()
         {
             MelonLogger.Msg("-------------------");
-            MelonLogger.Msg("Loading 92%");
-            MelonLogger.Msg("Mod has finished loading.");
             MelonLogger.Msg("Please feel free to contribute to my github I take pull requests!");
             MelonLogger.Msg("Keybinds:");
             MelonLogger.Msg("T = Show Current Info");
@@ -37,8 +35,8 @@ namespace BloonsFPSMelonMod
             MelonLogger.Msg("Right SHift = Open GUI");
             MelonLogger.Msg("More Coming Soon!");
             MelonLogger.Msg("-------------------");
-            MelonLogger.Warning("Don't Use Hacks Before In-Game, May Cause Crash!");
-            MelonLogger.Warning("If something does not work correcty, comment on github page!");
+            MelonLogger.Warning("Don't Use Anything Before In-Game, May Cause Crash!");
+            MelonLogger.Warning("If something does not work correcty, comment an issue on github!");
         }
 
         //--------------------------------------Declarations
@@ -69,14 +67,11 @@ namespace BloonsFPSMelonMod
             WaveSpawner = UnityEngine.Object.FindObjectOfType<WaveSpawner>();
             enemy = UnityEngine.Object.FindObjectOfType<Enemy>();
             followerScript = UnityEngine.Object.FindObjectOfType<FollowerScript>();
-            _weapon = UnityEngine.Object.FindObjectsOfType<Weapon>().ToList<Weapon>();
-
 
             //----------------Assigning Values
             health = playerHealth.health;
             money = currency.currency;
             currentweapon = weapon.ToString();
-
         }
 
         public static List<Weapon> _weapon;
@@ -85,15 +80,15 @@ namespace BloonsFPSMelonMod
         {
             if (Input.GetKeyDown(KeyCode.Y))
             {
-             CustomUpdate();
-             playerHealth.UpdateHealth(+100);
-             MelonLogger.Msg("Added 100 Health");
+                CustomUpdate();
+                playerHealth.UpdateHealth(+100);
+                MelonLogger.Msg("Added 100 Health");
             }
 
             if (Input.GetKeyDown(KeyCode.O))
             {
-             CustomUpdate();
-             currency.UpdateCurrency(+100);
+                CustomUpdate();
+                currency.UpdateCurrency(+100);
                 MelonLogger.Msg("Added 100 currency");
             }
 
@@ -123,8 +118,6 @@ namespace BloonsFPSMelonMod
                 MelonLogger.Msg("WeaponBuff = enabled");
             }
 
-
-            //if press T
             if (Input.GetKeyDown(KeyCode.T))
             {
              CustomUpdate();
@@ -138,37 +131,27 @@ namespace BloonsFPSMelonMod
                 MelonLogger.Msg("Done!");
             }
 
-                //-------------------------------------------Invincible
-                if (Input.GetKeyDown(KeyCode.I))
-                {
-                     CustomUpdate();
-
-                    if (CheatToggles.nobalooncollision == false)
-                    {
-                        CheatToggles.nobalooncollision = true;
-                        playerHealth.invincible = true;
-                        MelonLogger.Msg("You will now collide with baloons!");
-                    }
-                    else
-                    {
-                        CheatToggles.nobalooncollision = false;
-                        playerHealth.invincible = false;
-                        MelonLogger.Msg("You will no longer collide with baloons!");
-                    }
-
-                }
-                //----------------------------------------------------
-
-        }
-
-        public override void OnSceneWasLoaded(int buildIndex, string levelName)
-        {
-            if (levelName is null)
+            //-------------------------------------------Invincible
+            if (Input.GetKeyDown(KeyCode.I))
             {
-                throw new ArgumentNullException(nameof(levelName));
-            }
-        }
+                CustomUpdate();
 
+                if (CheatToggles.noblooncollision == false)
+                {
+                    CheatToggles.noblooncollision = true;
+                    PlayerHealth.instance.UpdateHealth(9999999);
+                    MelonLogger.Msg("You will now collide with baloons!");
+                }
+                else
+                {
+                    CheatToggles.noblooncollision = false;
+                    playerHealth.BecomeInvincible();
+                    MelonLogger.Msg("You will no longer collide with baloons!");
+                }
+            }
+            //----------------------------------------------------
+
+        }
         // If this stops working I'll smash my keyboard. I've been doing this for 3 days straight.
         public override void OnGUI()
         {

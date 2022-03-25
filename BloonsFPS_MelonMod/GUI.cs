@@ -18,6 +18,8 @@ namespace BloonsFPS_MelonMod
         public static SpawnObjectScript spawnObjectscript;
         public static FollowerScript followerScript;
         //--------------------------------------Assignable Values
+        public static int x; // Lives
+        public static int y; // Currency
         public static int health;
         public static int money;
         public static string currentweapon;
@@ -29,14 +31,6 @@ namespace BloonsFPS_MelonMod
         public static bool resetSmovementSpeed;
         public static string speedString;
         //--------------------------------------Define update currency and lives
-        public static void changeLives(int number)
-        {
-            PlayerHealth.instance.UpdateHealth(number);
-        }
-        public static void changeMoney(int number)
-        {
-            Currency.instance.UpdateCurrency(number);
-        }
 
         public static void CustomUpdate()
         {
@@ -71,43 +65,52 @@ namespace BloonsFPS_MelonMod
                     ;
                 }
 
-                GUI.Box(new Rect(0, 0, 400, 200), "BloonsFPSGUI");
+                GUI.Box(new Rect(0f, 0f, 400f, 200f), "BloonsFPSGUI");
 
-                if (GUI.Toggle(new Rect(0f, 20f, 200f, 20f), CheatToggles.nobalooncollision, "No Balloon Collision") != CheatToggles.nobalooncollision)
+                // God Mode
+                if (GUI.Toggle(new Rect(0f, 20f, 200f, 20f), CheatToggles.noblooncollision, "God Mode") != CheatToggles.noblooncollision)
                 {
-                    CheatToggles.nobalooncollision = !CheatToggles.nobalooncollision;
+                    CheatToggles.noblooncollision = !CheatToggles.noblooncollision;
                 }
-                if (GUI.Button(new Rect(0f, 36f, 200f, 20f), "Add $100"))
-                {
-                    CustomUpdate();
-                    currency.UpdateCurrency(+100);
-                    MelonLogger.Msg("Added 100 currency");
-                }
-                if (GUI.Button(new Rect(0f, 56f, 200f, 20f), "Add $1000"))
+
+                // Currency
+                if (GUI.Button(new Rect(0f, 36f, 200f, 20f), "Add Money"))
                 {
                     CustomUpdate();
-                    currency.UpdateCurrency(+1000);
-                    MelonLogger.Msg("Added $1000");
+                    currency.UpdateCurrency(+y);
+                    MelonLogger.Msg("Added currency");
                 }
-                if (GUI.Button(new Rect(0f, 76f, 200f, 20f), "Add $10000"))
+                y.ToString(currencyString);
+                currencyString = GUI.TextField(new Rect(0f, 60f, 200f, 20f), "Moners");
+
+                // Health
+                if (GUI.Button(new Rect(0f, 96f, 200f, 20f), "Add health"))
                 {
                     CustomUpdate();
-                    currency.UpdateCurrency(+10000);
-                    MelonLogger.Msg("Added $10000");
+                    playerHealth.UpdateHealth(+x);
+                    MelonLogger.Msg("Added health");
                 }
-                if (GUI.Button(new Rect(0f, 96f, 200f, 20f), "Add 100 health"))
+                x.ToString(livesString);
+                livesString = GUI.TextField(new Rect(0f, 120f, 200f, 20f), "Hearts");
+
+                // Dead function for now
+                if (GUI.Toggle(new Rect(200f, 20f, 200f, 20f), CheatToggles.GUIWeapon, "Bloon ESP") != CheatToggles.GUIWeapon)
                 {
-                    CustomUpdate();
-                    playerHealth.UpdateHealth(+100);
-                    MelonLogger.Msg("Added 100 health");
+                    CheatToggles.GUIWeapon = !CheatToggles.GUIWeapon;
                 }
-                if (GUI.Button(new Rect(0f, 116f, 200f, 20f), "Add 1000 health"))
+
+                // Weapon GUI
+                if (CheatToggles.GUIWeapon == true)
                 {
-                    CustomUpdate();
-                    playerHealth.UpdateHealth(+1000);
-                    MelonLogger.Msg("Added 1000 health");
+                    GUI.Box(new Rect(0f, 200f, 400f, 200f), "Weapon GUI");
+                    {
+                        if (GUI.Toggle(new Rect(0f, 210f, 200f, 20f), CheatToggles.enableWeaponBuff, "Hypersonic Toggle"))
+                        {
+                            CheatToggles.enableWeaponBuff = !CheatToggles.enableWeaponBuff;
+                        }
+                    }
                 }
-                GUI.Label(new Rect(300f, 10f, 200f, 20f), "AttackSpeed Value: " + WeaponHack::attackspeed.ToString());
+                
             }
             else if (CheatToggles.GUIEnabled == false)
             {

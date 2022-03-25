@@ -14,18 +14,19 @@ namespace BloonsFPSMelonMod
         {
             _weapon = UnityEngine.Object.FindObjectsOfType<Weapon>().ToList<Weapon>();
         }
+        public static Weapon weapon;
         public static List<Weapon> _weapon;
         public int damage;
         public float attackspeed;
-
-        public static int Value { get; set; }
 
         //Make the stupid dumb text read
         public void OnUpdate()
         {
             if (CheatToggles.enableWeaponBuff == true)
             {
-                CheatToggles.GUIWeapon = true;
+                CustomUpdate();
+                weapon.attackSpeed = 999f;
+                weapon.damage = 999;
 
             }
         }
